@@ -67,4 +67,4 @@ class Calculator {
         return fees;
     }
 }
-module.exports = Calculator;
+export default Calculator;
