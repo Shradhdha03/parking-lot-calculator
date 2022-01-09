@@ -23,12 +23,11 @@ class CalculatorApp extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value, fees: 0, error_message: '', success_message: '' });
-        this.setState({ [event.target.name]: event.target.value }, function () {
+        this.setState({ [event.target.name]: event.target.value, error_message: '', success_message: '' }, function () {
             if (['start_time', 'end_time'].includes(event.target.name) && this.state.start_time && this.state.end_time) {
                 const calculator = new Calculator();
                 const fees = calculator.calculate_fees(this.state.start_time, this.state.end_time);
-                this.setState({ fees: fees });
+                this.setState({ fees: (fees).toFixed(2) });
 
             }
         });
@@ -88,7 +87,7 @@ class CalculatorApp extends React.Component {
                         <div className="py-5 text-center">
                             <img className="d-block mx-auto mb-4" src="https://media.istockphoto.com/vectors/lester-b-pearson-airport-toronto-stamp-vector-id1278682364?s=612x612" alt="" width="100" />
                             <h2 className="text-primary">Airport Parking Lot Calculator</h2>
-                            <p className="lead">Toronto Pearson International Airport</p>
+                            <p className="lead">Toronto International Airport</p>
                         </div>
 
                         <div className="row g-5">
